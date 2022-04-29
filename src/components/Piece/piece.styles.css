@@ -1,0 +1,11 @@
+.piece {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-content: center;
+}
+
+.piece img {
+  width: 70px;
+  height: 70px;
+}
