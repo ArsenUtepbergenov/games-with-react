@@ -5,7 +5,18 @@
   place-content: center;
 }
 
-.piece img {
-  width: 70px;
-  height: 70px;
+.piece .chess-piece {
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80px;
+}
+
+.piece .chess-piece:hover {
+  cursor: grab;
+}
+
+.piece .chess-piece:active {
+  cursor: grabbing;
 }

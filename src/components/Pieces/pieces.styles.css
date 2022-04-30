@@ -2,11 +2,8 @@
   position: absolute;
   top: 0;
   left: 0;
-}
-
-.pieces .content {
-  position: relative;
   display: grid;
+  place-content: center;
   grid-template-rows: repeat(8, var(--tile-size));
   grid-template-columns: repeat(8, var(--tile-size));
   width: var(--board-size);

@@ -1,4 +1,5 @@
 import Piece from '@/components/Piece/Piece'
+import { useRef, useState } from 'react'
 import { axisX, axisY } from '../Board/Board'
 import './pieces.styles.css'
 
@@ -92,6 +93,9 @@ function setPawns(startY, img) {
 init()
 
 export default function Pieces() {
+  const [activePiece, setActivePiece] = useState(null)
+  const piecesRef = useRef()
+
   const draw = () => {
     const result = []
 
@@ -105,18 +109,73 @@ export default function Pieces() {
           }
         })
 
-        result.push(<Piece key={`${axisX[x]}${axisY[y]}${img}`} img={img} />)
+        result.push(<Piece key={`${x}${y}`} img={img} />)
       }
     }
 
     return result
   }
 
+  const grab = (e) => {
+    const element = e.target
+    const current = piecesRef.current
+
+    if (element.classList.contains('chess-piece') && current) {
+      const x = e.clientX - (window.innerWidth - current.clientWidth) / 2 - 50
+      const y = e.clientY - (window.innerHeight - current.clientHeight) / 2 - 50
+      element.style.position = 'absolute'
+      element.style.left = `${x}px`
+      element.style.top = `${y}px`
+
+      setActivePiece(element)
+    }
+  }
+
+  const move = (e) => {
+    const element = e.target
+    const current = piecesRef.current
+
+    if (current && activePiece) {
+      const minX = current.offsetLeft - 25
+      const minY = current.offsetTop - 25
+      const maxX = current.offsetLeft + current.clientWidth - 75
+      const maxY = current.offsetTop + current.clientHeight - 75
+      const x = e.clientX - (window.innerWidth - current.clientWidth) / 2 - 50
+      const y = e.clientY - (window.innerHeight - current.clientHeight) / 2 - 50
+      element.style.left = `${x}px`
+      element.style.top = `${y}px`
+      element.style.position = 'absolute'
+
+      if (x < minX)
+        activePiece.style.left = `${minX}px`;
+      else if (x > maxX)
+        activePiece.style.left = `${maxX}px`;
+      else
+        activePiece.style.left = `${x}px`;
+
+      if (y < minY)
+        activePiece.style.top = `${minY}px`;
+      else if (y > maxY)
+        activePiece.style.top = `${maxY}px`;
+      else
+        activePiece.style.top = `${y}px`;
+    }
+  }
+
+  const drop = (e) => {
+    if (activePiece)
+      setActivePiece(null)
+  }
+
   return (
-    <div className='pieces'>
-      <div className='content'>
-        {draw()}
-      </div>
+    <div
+      ref={piecesRef}
+      className='pieces'
+      onMouseDown={e => grab(e)}
+      onMouseMove={e => move(e)}
+      onMouseUp={e => drop(e)}
+    >
+      {draw()}
     </div>
   )
 }
