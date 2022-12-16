@@ -1,10 +1,10 @@
-import Board from "./components/Board/Board"
 import './app.styles.css'
+import Minesweeper from '@/games/minesweeper'
 
 function App() {
   return (
     <div className="app">
-      <Board />
+      <Minesweeper />
     </div>
   )
 }

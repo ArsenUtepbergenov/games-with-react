@@ -1,4 +1,4 @@
-import Piece from '@/components/Piece/Piece'
+import Piece from '../Piece/Piece'
 import { useMemo, useRef, useState } from 'react'
 import { axisX, axisY } from '../Board/Board'
 import { initPieces } from './initState'
