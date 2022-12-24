@@ -1,0 +1,50 @@
+.table {
+  height: 100vh;
+  background: #076324;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(249px, 1fr));
+  grid-template-columns: minmax(100vw, 100vw);
+}
+
+.opponent-side {
+  grid-row: 1/2;
+}
+
+.player-side {
+  grid-row: 3/4;
+}
+
+.opponent-side,
+.player-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0 20px;
+  position: relative;
+}
+
+.common {
+  grid-row: 2/3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 60px 0 0;
+}
+
+.card {
+  width: 124px;
+  height: 180px;
+  object-fit: cover;
+  position: absolute;
+}
+
+.trump {
+  rotate: -90deg;
+  translate: -62px;
+  position: fixed;
+}
+
+.back {
+  z-index: 1;
+}

@@ -47,7 +47,7 @@ function createField() {
 const Minesweeper = () => {
   const dimensions = new Array(size).fill(null)
   const [state, setState] = useState(State.play)
-  const [field, _] = useState(() => createField())
+  const [field] = useState(() => createField())
   const [mask, setMask] = useState(() => new Array(size * size).fill(Cell.fill))
 
   const win = useMemo(

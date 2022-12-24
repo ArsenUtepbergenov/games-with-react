@@ -1,10 +1,9 @@
-import './app.styles.css'
-import Minesweeper from '@/games/minesweeper'
+import Durak from './games/durak'
 
 function App() {
   return (
     <div className="app">
-      <Minesweeper />
+      <Durak />
     </div>
   )
 }
