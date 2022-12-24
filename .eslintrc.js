@@ -28,6 +28,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react/prop-types': 0,
     'no-inner-declarations': 0,
+    'no-unused-vars': 0,
   },
   env: {
     browser: true,

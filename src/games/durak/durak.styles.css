@@ -37,6 +37,7 @@
   height: 180px;
   object-fit: cover;
   position: absolute;
+  cursor: pointer;
 }
 
 .trump {
