@@ -8,8 +8,6 @@ const kinds = ['6', '7', '8', '9', '10', 'j', 'q', 'k', 'a']
 const suits = ['spades', 'clubs', 'hearts', 'diamonds']
 const CARDS_URL = 'src/assets/cards/'
 
-export const backCard = loadImage(`${CARDS_URL}back.png`)
-
 export function loadDeck() {
   const cardFileNames = new Set()
   const cardImages = new Map()
@@ -22,3 +20,6 @@ export function loadDeck() {
 
   return cardImages
 }
+
+export const fullDeck = loadDeck()
+export const backCard = loadImage(`${CARDS_URL}back.png`)
