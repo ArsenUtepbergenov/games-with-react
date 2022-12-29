@@ -1,17 +1,22 @@
 import Card from './Card'
-import { fullDeck } from '@/api'
 
-export default function Cards({ list, step = 0, className = '' }) {
-  const cardImages = list.map(c => fullDeck.get(c.value))
-
+export default function Cards({
+  list,
+  step = 0,
+  flipped = false,
+  clickable = false,
+  className = '',
+}) {
   return (
     <>
-      {cardImages.map(({ src }, i) => {
+      {Array.from(list).map((item, i) => {
         return (
           <Card
-            key={src}
-            src={src}
+            key={item.value}
+            item={item}
             className={className}
+            flipped={flipped}
+            clickable={clickable}
             styles={{ left: `${i * step}px` }}
           />
         )

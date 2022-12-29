@@ -1,9 +1,12 @@
 import Durak from './games/durak'
+import { DurakProvider } from './games/durak/durak.context'
 
 function App() {
   return (
     <div className="app">
-      <Durak />
+      <DurakProvider>
+        <Durak />
+      </DurakProvider>
     </div>
   )
 }
